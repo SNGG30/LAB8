@@ -39,7 +39,7 @@ public class Universo {
 
     @Override
     public String toString() {
-        return "Universo{" + "NombreU=" + NombreU + ", Register=" + Register + '}';
+        return "Nombre del universo: " + NombreU;
     }
     
 }

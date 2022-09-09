@@ -72,7 +72,7 @@ public class Vivos {
 
     @Override
     public String toString() {
-        return "Vivos{" + "Nombre=" + Nombre + ", ID=" + ID + ", Poder=" + Poder + ", Edad=" + Edad + ", Proce=" + Proce + ", Raza=" + Raza + '}';
+        return "Nombre: " + Nombre;
     }
     
 }
