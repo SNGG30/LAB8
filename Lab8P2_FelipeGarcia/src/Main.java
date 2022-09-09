@@ -644,7 +644,10 @@ public class Main extends javax.swing.JFrame {
     private void BTN_ClifeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_ClifeMouseClicked
         // TODO add your handling code here:
         
-        System.out.println("ouch");
+        if(BTN_Clife.isEnabled()){
+            System.out.println("Hola");
+        }else{
+        }
     }//GEN-LAST:event_BTN_ClifeMouseClicked
 
     private void BTN_Clife1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_Clife1MouseClicked
@@ -696,6 +699,12 @@ public class Main extends javax.swing.JFrame {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            adminUniverso au=new adminUniverso("./3General/Universos");
+            au.cargarArchivo();
+            au.setUniverso(U);
+            au.escribirArchivo();   
+            JOptionPane.showMessageDialog(this, "Universo guardado exitosamente");
+
         }
     }//GEN-LAST:event_BTN_CuniMouseClicked
 
