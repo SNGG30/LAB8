@@ -680,7 +680,8 @@ public class Main extends javax.swing.JFrame {
             FileOutputStream fw = null;
             ObjectOutputStream bw = null;
             Universo U = new Universo(TF_NameU.getText());
-            File temp = new File(TF_NameU.getText());
+            File temp = new File("./2Universos/" + TF_NameU.getText());
+            //File temp = new File(TF_NameU.getText());
             
             try {
                 fw = new FileOutputStream(temp);
