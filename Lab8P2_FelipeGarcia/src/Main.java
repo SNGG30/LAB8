@@ -29,12 +29,12 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         
         adminUniverso au = new adminUniverso();
-        File general = new File("./3General/Universos");
-        au.setGeneral(general);
+        File generalU = new File("./3General/Universos");
+        au.setGeneral(generalU);
         au.cargarArchivo();
-        U = au.getListaU();
+        Unive = au.getListaU();
 
-        if(U.size() > 0){
+        if(Unive.size() > 0){
             TF_NameP.setEnabled(true);
             TF_ID.setEnabled(true);
             CB_Pwr.setEnabled(true);
@@ -44,13 +44,19 @@ public class Main extends javax.swing.JFrame {
             BTN_Clife.setEnabled(true);
             
             DefaultComboBoxModel Univ = (DefaultComboBoxModel) CB_Univp.getModel();
-            for (int i = 0; i < U.size(); i++){
-                Univ.addElement(U.get(i));
+            for (int i = 0; i < Unive.size(); i++){
+                Univ.addElement(Unive.get(i));
             }
         }
-        for(int i = 0; i < U.size(); i++){
-            System.out.println(U.get(i).toString());
+        for(int i = 0; i < Unive.size(); i++){
+            System.out.println(Unive.get(i).toString());
         }
+        
+        adminSeres as = new adminSeres();
+        File generalS = new File("./3General/Seres");
+        as.setGeneral(generalS);
+        as.cargarArchivo();
+        Perso = as.getListaV();
     }
 
     /**
@@ -680,7 +686,47 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if(BTN_Clife.isEnabled()){
-            System.out.println("Hola");
+            if(TF_NameP.getText().isEmpty() || TF_ID.getText().isEmpty()){
+                JOptionPane.showMessageDialog(rootPane, "Error - Lineas vacias");
+            }else{
+                String Nombre = TF_NameP.getText();
+                String num = TF_ID.getText();
+                
+                try{
+                    long ID = Long.parseLong(num);
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(rootPane, "Error - Letras en ID");                 
+                }
+                int Poder = (int) CB_Pwr.getSelectedItem();
+                int Edad = (int) SP_Age.getValue();
+                Universo Proce = (Universo) CB_Univp.getSelectedItem();
+                String Raza = (String) CB_Race.getSelectedItem();
+                
+                Vivos V = new Vivos(Nombre, Edad, Poder, Edad, Proce, Raza);
+                FileOutputStream fw = null;
+                ObjectOutputStream bw = null;
+                
+                File temp = new File("./1Seres/" + TF_NameP.getText());
+                
+                try{
+                    fw = new FileOutputStream(temp);
+                    bw = new ObjectOutputStream(fw);
+
+                    bw.writeObject(V);
+
+                    bw.flush();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                adminSeres as = new adminSeres("./3General/Seres");
+                as.cargarArchivo();
+                as.setSeres(V);
+                as.escribirArchivo();
+                JOptionPane.showMessageDialog(this, "Ser vivo guardado exitosamente");
+            }
         }else{
         }
     }//GEN-LAST:event_BTN_ClifeMouseClicked
@@ -754,8 +800,8 @@ public class Main extends javax.swing.JFrame {
         });
     }
 
-    ArrayList<Vivos> P = new ArrayList();
-    ArrayList<Universo> U = new ArrayList();
+    ArrayList<Vivos> Perso = new ArrayList();
+    ArrayList<Universo> Unive = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Clife;
     private javax.swing.JButton BTN_Clife1;
