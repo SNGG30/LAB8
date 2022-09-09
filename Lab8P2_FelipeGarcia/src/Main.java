@@ -4,9 +4,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.DefaultComboBoxModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -25,6 +27,30 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        
+        adminUniverso au = new adminUniverso();
+        File general = new File("./3General/Universos");
+        au.setGeneral(general);
+        au.cargarArchivo();
+        U = au.getListaU();
+
+        if(U.size() > 0){
+            TF_NameP.setEnabled(true);
+            TF_ID.setEnabled(true);
+            CB_Pwr.setEnabled(true);
+            SP_Age.setEnabled(true);
+            CB_Univp.setEnabled(true);
+            CB_Race.setEnabled(true);
+            BTN_Clife.setEnabled(true);
+            
+            DefaultComboBoxModel Univ = (DefaultComboBoxModel) CB_Univp.getModel();
+            for (int i = 0; i < U.size(); i++){
+                Univ.addElement(U.get(i));
+            }
+        }
+        for(int i = 0; i < U.size(); i++){
+            System.out.println(U.get(i).toString());
+        }
     }
 
     /**
@@ -91,7 +117,6 @@ public class Main extends javax.swing.JFrame {
         CB_ListU = new javax.swing.JComboBox<>();
         TXT_ChargeV = new javax.swing.JLabel();
         CB_ListV = new javax.swing.JComboBox<>();
-        M_Sav = new javax.swing.JPanel();
         PB_SeresCargados = new javax.swing.JProgressBar();
         BTN_Personas = new javax.swing.JToggleButton();
 
@@ -178,7 +203,6 @@ public class Main extends javax.swing.JFrame {
         CB_Race.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Humano", "Amanto" }));
         CB_Race.setEnabled(false);
 
-        CB_Univp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CB_Univp.setEnabled(false);
 
         javax.swing.GroupLayout M_CreateLayout = new javax.swing.GroupLayout(M_Create);
@@ -576,19 +600,6 @@ public class Main extends javax.swing.JFrame {
 
         TP_Main.addTab("Modificacion", M_Mod);
 
-        javax.swing.GroupLayout M_SavLayout = new javax.swing.GroupLayout(M_Sav);
-        M_Sav.setLayout(M_SavLayout);
-        M_SavLayout.setHorizontalGroup(
-            M_SavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 848, Short.MAX_VALUE)
-        );
-        M_SavLayout.setVerticalGroup(
-            M_SavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
-        );
-
-        TP_Main.addTab("Guardado", M_Sav);
-
         javax.swing.GroupLayout P_MainLayout = new javax.swing.GroupLayout(P_Main);
         P_Main.setLayout(P_MainLayout);
         P_MainLayout.setHorizontalGroup(
@@ -629,54 +640,54 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TF_NamePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_NamePActionPerformed
+    private void TF_NameU1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_NameU1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TF_NamePActionPerformed
+    }//GEN-LAST:event_TF_NameU1ActionPerformed
 
-    private void TF_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_IDActionPerformed
+    private void TF_ID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_ID1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TF_IDActionPerformed
+    }//GEN-LAST:event_TF_ID1ActionPerformed
+
+    private void TF_NameP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_NameP1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TF_NameP1ActionPerformed
+
+    private void BTN_Clife1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_Clife1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTN_Clife1MouseClicked
+
+    private void TF_IDSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_IDSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TF_IDSearchActionPerformed
+
+    private void TF_NameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_NameSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TF_NameSearchActionPerformed
 
     private void TF_NameUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_NameUActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TF_NameUActionPerformed
 
+    private void TF_IDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_IDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TF_IDActionPerformed
+
+    private void TF_NamePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_NamePActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TF_NamePActionPerformed
+
     private void BTN_ClifeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_ClifeMouseClicked
         // TODO add your handling code here:
-        
+
         if(BTN_Clife.isEnabled()){
             System.out.println("Hola");
         }else{
         }
     }//GEN-LAST:event_BTN_ClifeMouseClicked
 
-    private void BTN_Clife1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_Clife1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BTN_Clife1MouseClicked
-
-    private void TF_NameP1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_NameP1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TF_NameP1ActionPerformed
-
-    private void TF_ID1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_ID1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TF_ID1ActionPerformed
-
-    private void TF_NameU1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_NameU1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TF_NameU1ActionPerformed
-
-    private void TF_NameSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_NameSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TF_NameSearchActionPerformed
-
-    private void TF_IDSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TF_IDSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TF_IDSearchActionPerformed
-
     private void BTN_CuniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_CuniMouseClicked
         // TODO add your handling code here:
-        
+
         if(TF_NameU.getText().isEmpty()){
             JOptionPane.showMessageDialog(rootPane, "Error - Nombre Vacio");
         }else{
@@ -685,24 +696,24 @@ public class Main extends javax.swing.JFrame {
             Universo U = new Universo(TF_NameU.getText());
             File temp = new File("./2Universos/" + TF_NameU.getText());
             //File temp = new File(TF_NameU.getText());
-            
+
             try {
                 fw = new FileOutputStream(temp);
                 bw = new ObjectOutputStream(fw);
-                
+
                 bw.writeObject(U);
-                
+
                 bw.flush();
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             } catch (IOException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
             adminUniverso au=new adminUniverso("./3General/Universos");
             au.cargarArchivo();
             au.setUniverso(U);
-            au.escribirArchivo();   
+            au.escribirArchivo();
             JOptionPane.showMessageDialog(this, "Universo guardado exitosamente");
 
         }
@@ -743,6 +754,8 @@ public class Main extends javax.swing.JFrame {
         });
     }
 
+    ArrayList<Vivos> P = new ArrayList();
+    ArrayList<Universo> U = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Clife;
     private javax.swing.JButton BTN_Clife1;
@@ -760,7 +773,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel M_BusqElim;
     private javax.swing.JPanel M_Create;
     private javax.swing.JPanel M_Mod;
-    private javax.swing.JPanel M_Sav;
     private javax.swing.JProgressBar PB_SeresCargados;
     private javax.swing.JPanel P_Main;
     private javax.swing.JPanel P_bar;

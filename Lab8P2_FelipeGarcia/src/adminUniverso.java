@@ -69,7 +69,7 @@ public class adminUniverso {
                 entrada.close();
             }
         } catch(Exception ex){
-            ex.printStackTrace();
+            //ex.printStackTrace();
         }
     }
     
