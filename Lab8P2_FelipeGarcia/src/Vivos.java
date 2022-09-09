@@ -1,3 +1,6 @@
+
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,7 +11,7 @@
  *
  * @author felip
  */
-public class Vivos {
+public class Vivos implements Serializable{
     
     private String Nombre;
     private long ID;
@@ -16,6 +19,8 @@ public class Vivos {
     private int Edad;
     private Universo Proce;
     private String Raza;
+    
+    private static final long SerialVersionUID=888L;
 
     public Vivos() {
     }

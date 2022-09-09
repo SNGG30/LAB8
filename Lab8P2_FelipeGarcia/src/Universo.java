@@ -1,4 +1,5 @@
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
@@ -11,10 +12,12 @@ import java.util.ArrayList;
  *
  * @author felip
  */
-public class Universo {
+public class Universo implements Serializable{
     
     private String NombreU;
     private ArrayList<Vivos> Register = new ArrayList();
+    
+    private static final long SerialVersionUID=888L;
 
     public Universo() {
     }
