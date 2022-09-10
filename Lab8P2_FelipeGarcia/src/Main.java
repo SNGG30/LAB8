@@ -42,10 +42,23 @@ public class Main extends javax.swing.JFrame {
             CB_Univp.setEnabled(true);
             CB_Race.setEnabled(true);
             BTN_Clife.setEnabled(true);
+            TF_NameP1.setEnabled(true);
+            TF_ID1.setEnabled(true);
+            CB_Pwr1.setEnabled(true);
+            SP_Age1.setEnabled(true);
+            CB_Univp1.setEnabled(true);
+            CB_Race1.setEnabled(true);
+            BTN_Clife1.setEnabled(true);
+            TF_NameU1.setEnabled(true);
+            BTN_Cuni1.setEnabled(true);
             
             DefaultComboBoxModel Univ = (DefaultComboBoxModel) CB_Univp.getModel();
+            DefaultComboBoxModel Univ2 = (DefaultComboBoxModel) CB_Univp1.getModel();
+            DefaultComboBoxModel Univ3 = (DefaultComboBoxModel) CB_ListU.getModel();
             for (int i = 0; i < Unive.size(); i++){
                 Univ.addElement(Unive.get(i));
+                Univ2.addElement(Unive.get(i));
+                Univ3.addElement(Unive.get(i));
             }
         }
         for(int i = 0; i < Unive.size(); i++){
@@ -57,6 +70,11 @@ public class Main extends javax.swing.JFrame {
         as.setGeneral(generalS);
         as.cargarArchivo();
         Perso = as.getListaV();
+        
+        DefaultComboBoxModel Vivir = (DefaultComboBoxModel) CB_ListV.getModel();
+        for(int i = 0; i < Perso.size(); i++){
+            Vivir.addElement(Perso.get(i));
+        }
     }
 
     /**
@@ -351,6 +369,11 @@ public class Main extends javax.swing.JFrame {
 
         jToggleButton1.setText("Buscar");
         jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jToggleButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jToggleButton1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout M_BusqElimLayout = new javax.swing.GroupLayout(M_BusqElim);
         M_BusqElim.setLayout(M_BusqElimLayout);
@@ -476,16 +499,11 @@ public class Main extends javax.swing.JFrame {
         CB_Race1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Humano", "Amanto" }));
         CB_Race1.setEnabled(false);
 
-        CB_Univp1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CB_Univp1.setEnabled(false);
 
         TXT_ChargeU.setText("Cargar: ");
 
-        CB_ListU.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         TXT_ChargeV.setText("Cargar: ");
-
-        CB_ListV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout M_ModLayout = new javax.swing.GroupLayout(M_Mod);
         M_Mod.setLayout(M_ModLayout);
@@ -697,8 +715,8 @@ public class Main extends javax.swing.JFrame {
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(rootPane, "Error - Letras en ID");                 
                 }
-                int Poder = (int) CB_Pwr.getSelectedItem();
-                int Edad = (int) SP_Age.getValue();
+                int Poder = Integer.parseInt(CB_Pwr.getSelectedItem().toString());
+                int Edad = Integer.parseInt(SP_Age.getValue().toString());
                 Universo Proce = (Universo) CB_Univp.getSelectedItem();
                 String Raza = (String) CB_Race.getSelectedItem();
                 
@@ -764,6 +782,31 @@ public class Main extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_BTN_CuniMouseClicked
+
+    private void jToggleButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jToggleButton1MouseClicked
+        // TODO add your handling code here:
+        
+        boolean bool = false;
+        String search1 = TF_NameSearch.getText();
+        String searchid = TF_IDSearch.getText();
+        int found = 0;
+        long search2 = Long.parseLong(searchid);
+        
+        for (int i = 0; i < Perso.size(); i++) {
+            if(Perso.get(i).getNombre().equals(search1)){
+                if(Perso.get(i).getID() == search2){
+                    bool = true;
+                    found = i;
+                }
+            }
+        }
+        
+        if(bool == false){
+            JOptionPane.showMessageDialog(this, "La persona no existe");
+        }else{
+            JOptionPane.showMessageDialog(this, "La persona si existe! \n Vive en: " + Perso.get(found).getProce().toString());
+        }
+    }//GEN-LAST:event_jToggleButton1MouseClicked
 
     /**
      * @param args the command line arguments
