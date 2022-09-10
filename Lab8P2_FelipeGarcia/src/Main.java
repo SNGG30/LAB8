@@ -55,16 +55,13 @@ public class Main extends javax.swing.JFrame {
             DefaultComboBoxModel Univ = (DefaultComboBoxModel) CB_Univp.getModel();
             DefaultComboBoxModel Univ2 = (DefaultComboBoxModel) CB_Univp1.getModel();
             DefaultComboBoxModel Univ3 = (DefaultComboBoxModel) CB_ListU.getModel();
-            DefaultComboBoxModel Univ4 = (DefaultComboBoxModel) CB_DelU.getModel();
+            DefaultComboBoxModel Univ4 = (DefaultComboBoxModel) CB_Univsearch.getModel();
             for (int i = 0; i < Unive.size(); i++){
                 Univ.addElement(Unive.get(i));
                 Univ2.addElement(Unive.get(i));
                 Univ3.addElement(Unive.get(i));
                 Univ4.addElement(Unive.get(i));
             }
-        }
-        for(int i = 0; i < Unive.size(); i++){
-            System.out.println(Unive.get(i).toString());
         }
         
         adminSeres as = new adminSeres();
@@ -122,12 +119,8 @@ public class Main extends javax.swing.JFrame {
         TF_IDSearch = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
         TXT_Viv = new javax.swing.JLabel();
-        TXT_Un = new javax.swing.JLabel();
         CB_DelS = new javax.swing.JComboBox<>();
-        CB_DelU = new javax.swing.JComboBox<>();
-        jPanel1 = new javax.swing.JPanel();
         BTN_ElimS = new javax.swing.JButton();
-        BTN_ElimU = new javax.swing.JButton();
         M_Mod = new javax.swing.JPanel();
         TXT_Universe1 = new javax.swing.JLabel();
         P_bar1 = new javax.swing.JPanel();
@@ -152,6 +145,11 @@ public class Main extends javax.swing.JFrame {
         CB_ListU = new javax.swing.JComboBox<>();
         TXT_ChargeV = new javax.swing.JLabel();
         CB_ListV = new javax.swing.JComboBox<>();
+        TP_Univsearch = new javax.swing.JPanel();
+        CB_Univsearch = new javax.swing.JComboBox<>();
+        BTN_UnivSearch = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TA_UnivList = new javax.swing.JTextArea();
         PB_SeresCargados = new javax.swing.JProgressBar();
         BTN_Personas = new javax.swing.JToggleButton();
 
@@ -388,26 +386,8 @@ public class Main extends javax.swing.JFrame {
 
         TXT_Viv.setText("Seres");
 
-        TXT_Un.setText("Universos");
-
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
         BTN_ElimS.setText("Eliminar");
         BTN_ElimS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        BTN_ElimU.setText("Eliminar");
-        BTN_ElimU.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout M_BusqElimLayout = new javax.swing.GroupLayout(M_BusqElim);
         M_BusqElim.setLayout(M_BusqElimLayout);
@@ -421,41 +401,28 @@ public class Main extends javax.swing.JFrame {
             .addGroup(M_BusqElimLayout.createSequentialGroup()
                 .addGroup(M_BusqElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(M_BusqElimLayout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(TXT_Viv, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addGroup(M_BusqElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(M_BusqElimLayout.createSequentialGroup()
+                                .addComponent(TXT_Elim, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(188, 188, 188)
+                                .addComponent(TXT_Viv, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(M_BusqElimLayout.createSequentialGroup()
+                                .addComponent(TXT_inst1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TF_NameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(M_BusqElimLayout.createSequentialGroup()
+                                .addComponent(TXT_inst2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TF_IDSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TXT_Search)))
                     .addGroup(M_BusqElimLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(CB_DelS, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113)
-                .addGroup(M_BusqElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, M_BusqElimLayout.createSequentialGroup()
-                        .addComponent(TXT_Un)
-                        .addGap(255, 255, 255))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, M_BusqElimLayout.createSequentialGroup()
-                        .addComponent(CB_DelU, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(170, 170, 170))))
-            .addGroup(M_BusqElimLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(M_BusqElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TXT_Elim, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(362, 362, 362)
+                        .addComponent(BTN_ElimS))
                     .addGroup(M_BusqElimLayout.createSequentialGroup()
-                        .addComponent(TXT_inst1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TF_NameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(M_BusqElimLayout.createSequentialGroup()
-                        .addComponent(TXT_inst2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TF_IDSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(TXT_Search))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(M_BusqElimLayout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(BTN_ElimS)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BTN_ElimU)
-                .addGap(216, 216, 216))
+                        .addGap(304, 304, 304)
+                        .addComponent(CB_DelS, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
         M_BusqElimLayout.setVerticalGroup(
             M_BusqElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -472,26 +439,20 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(M_BusqElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(TXT_inst2)
                     .addComponent(TF_IDSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
-                .addComponent(TXT_Bar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(TXT_Elim, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(M_BusqElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(M_BusqElimLayout.createSequentialGroup()
-                        .addGroup(M_BusqElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TXT_Viv)
-                            .addComponent(TXT_Un))
-                        .addGap(23, 23, 23)
-                        .addGroup(M_BusqElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CB_DelS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CB_DelU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addGroup(M_BusqElimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BTN_ElimS)
-                    .addComponent(BTN_ElimU))
-                .addGap(36, 36, 36))
+                        .addGap(55, 55, 55)
+                        .addComponent(TXT_Bar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TXT_Elim, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(M_BusqElimLayout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(TXT_Viv)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(CB_DelS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(BTN_ElimS)
+                .addGap(35, 35, 35))
         );
 
         TP_Main.addTab("Busqueda / Eliminacion", M_BusqElim);
@@ -709,6 +670,49 @@ public class Main extends javax.swing.JFrame {
 
         TP_Main.addTab("Modificacion", M_Mod);
 
+        BTN_UnivSearch.setText("Listar");
+        BTN_UnivSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_UnivSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BTN_UnivSearchMouseClicked(evt);
+            }
+        });
+
+        TA_UnivList.setColumns(20);
+        TA_UnivList.setRows(5);
+        jScrollPane1.setViewportView(TA_UnivList);
+
+        javax.swing.GroupLayout TP_UnivsearchLayout = new javax.swing.GroupLayout(TP_Univsearch);
+        TP_Univsearch.setLayout(TP_UnivsearchLayout);
+        TP_UnivsearchLayout.setHorizontalGroup(
+            TP_UnivsearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TP_UnivsearchLayout.createSequentialGroup()
+                .addGroup(TP_UnivsearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TP_UnivsearchLayout.createSequentialGroup()
+                        .addGap(311, 311, 311)
+                        .addComponent(CB_Univsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(TP_UnivsearchLayout.createSequentialGroup()
+                        .addGap(373, 373, 373)
+                        .addComponent(BTN_UnivSearch))
+                    .addGroup(TP_UnivsearchLayout.createSequentialGroup()
+                        .addGap(266, 266, 266)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(270, Short.MAX_VALUE))
+        );
+        TP_UnivsearchLayout.setVerticalGroup(
+            TP_UnivsearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TP_UnivsearchLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(CB_Univsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BTN_UnivSearch)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(96, Short.MAX_VALUE))
+        );
+
+        TP_Main.addTab("Buscar por Universo", TP_Univsearch);
+
         javax.swing.GroupLayout P_MainLayout = new javax.swing.GroupLayout(P_Main);
         P_Main.setLayout(P_MainLayout);
         P_MainLayout.setHorizontalGroup(
@@ -923,6 +927,21 @@ public class Main extends javax.swing.JFrame {
         h.start();
     }//GEN-LAST:event_BTN_PersonasMouseClicked
 
+    private void BTN_UnivSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_UnivSearchMouseClicked
+        // TODO add your handling code here:
+        
+        Universo search = (Universo)CB_Univsearch.getSelectedItem();
+        String idx = search.getNombreU();
+        
+        for (int i = 0; i < Perso.size(); i++) {
+            Universo t1 = Perso.get(i).getProce();
+            String temp = t1.getNombreU();
+            if(idx.equals(temp)){
+                TA_UnivList.append(Perso.get(i).toString() + "\n");
+            }
+        }
+    }//GEN-LAST:event_BTN_UnivSearchMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -966,10 +985,9 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Cuni;
     private javax.swing.JButton BTN_Cuni1;
     private javax.swing.JButton BTN_ElimS;
-    private javax.swing.JButton BTN_ElimU;
     private javax.swing.JToggleButton BTN_Personas;
+    private javax.swing.JButton BTN_UnivSearch;
     private javax.swing.JComboBox<String> CB_DelS;
-    private javax.swing.JComboBox<String> CB_DelU;
     private javax.swing.JComboBox<String> CB_ListU;
     private javax.swing.JComboBox<String> CB_ListV;
     private javax.swing.JComboBox<String> CB_Pwr;
@@ -978,6 +996,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CB_Race1;
     private javax.swing.JComboBox<String> CB_Univp;
     private javax.swing.JComboBox<String> CB_Univp1;
+    private javax.swing.JComboBox<String> CB_Univsearch;
     private javax.swing.JPanel M_BusqElim;
     private javax.swing.JPanel M_Create;
     private javax.swing.JPanel M_Mod;
@@ -987,6 +1006,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel P_bar1;
     private javax.swing.JSpinner SP_Age;
     private javax.swing.JSpinner SP_Age1;
+    private javax.swing.JTextArea TA_UnivList;
     private javax.swing.JTextField TF_ID;
     private javax.swing.JTextField TF_ID1;
     private javax.swing.JTextField TF_IDSearch;
@@ -996,6 +1016,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField TF_NameU;
     private javax.swing.JTextField TF_NameU1;
     private javax.swing.JTabbedPane TP_Main;
+    private javax.swing.JPanel TP_Univsearch;
     private javax.swing.JLabel TXT_Age;
     private javax.swing.JLabel TXT_Age1;
     private javax.swing.JPanel TXT_Bar2;
@@ -1015,7 +1036,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel TXT_Race;
     private javax.swing.JLabel TXT_Race1;
     private javax.swing.JLabel TXT_Search;
-    private javax.swing.JLabel TXT_Un;
     private javax.swing.JLabel TXT_Universe;
     private javax.swing.JLabel TXT_Universe1;
     private javax.swing.JLabel TXT_Univp;
@@ -1023,7 +1043,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel TXT_Viv;
     private javax.swing.JLabel TXT_inst1;
     private javax.swing.JLabel TXT_inst2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
