@@ -152,6 +152,7 @@ public class Main extends javax.swing.JFrame {
         TA_UnivList = new javax.swing.JTextArea();
         PB_SeresCargados = new javax.swing.JProgressBar();
         BTN_Personas = new javax.swing.JToggleButton();
+        aviso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Control de Amantos");
@@ -388,6 +389,11 @@ public class Main extends javax.swing.JFrame {
 
         BTN_ElimS.setText("Eliminar");
         BTN_ElimS.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTN_ElimS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BTN_ElimSMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout M_BusqElimLayout = new javax.swing.GroupLayout(M_BusqElim);
         M_BusqElim.setLayout(M_BusqElimLayout);
@@ -732,6 +738,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        aviso.setText("IMPORTANTE, DEBE CERRAR EL PROGRAMA PARA EFECTUAR CAMBIOS DE LOS ARCHIVOS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -743,15 +751,23 @@ public class Main extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BTN_Personas, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(aviso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(172, 172, 172))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PB_SeresCargados, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BTN_Personas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(aviso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(PB_SeresCargados, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(BTN_Personas)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(P_Main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -803,9 +819,9 @@ public class Main extends javax.swing.JFrame {
             }else{
                 String Nombre = TF_NameP.getText();
                 String num = TF_ID.getText();
-                
+                int ID = 0;
                 try{
-                    int ID = Integer.parseInt(num);
+                    ID = Integer.parseInt(num);
                 }catch(Exception e){
                     JOptionPane.showMessageDialog(rootPane, "Error - Letras en ID");                 
                 }
@@ -814,7 +830,7 @@ public class Main extends javax.swing.JFrame {
                 Universo Proce = (Universo) CB_Univp.getSelectedItem();
                 String Raza = (String) CB_Race.getSelectedItem();
                 
-                Vivos V = new Vivos(Nombre, Edad, Poder, Edad, Proce, Raza);
+                Vivos V = new Vivos(Nombre, ID, Poder, Edad, Proce, Raza);
                 FileOutputStream fw = null;
                 ObjectOutputStream bw = null;
                 
@@ -838,6 +854,9 @@ public class Main extends javax.swing.JFrame {
                 as.setSeres(V);
                 as.escribirArchivo();
                 JOptionPane.showMessageDialog(this, "Ser vivo guardado exitosamente");
+                
+                TF_NameP.setText("");
+                TF_ID.setText("");
             }
         }else{
         }
@@ -874,6 +893,7 @@ public class Main extends javax.swing.JFrame {
             au.escribirArchivo();
             JOptionPane.showMessageDialog(this, "Universo guardado exitosamente");
 
+            TF_NameU.setText("");
         }
     }//GEN-LAST:event_BTN_CuniMouseClicked
 
@@ -900,6 +920,9 @@ public class Main extends javax.swing.JFrame {
         }else{
             JOptionPane.showMessageDialog(this, "La persona si existe! \n Vive en: " + Perso.get(found).getProce().toString());
         }
+        
+        TF_NameSearch.setText("");
+        TF_IDSearch.setText("");
     }//GEN-LAST:event_jToggleButton1MouseClicked
 
     private void CB_ListUItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CB_ListUItemStateChanged
@@ -930,6 +953,7 @@ public class Main extends javax.swing.JFrame {
     private void BTN_UnivSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_UnivSearchMouseClicked
         // TODO add your handling code here:
         
+        TA_UnivList.setText("");
         Universo search = (Universo)CB_Univsearch.getSelectedItem();
         String idx = search.getNombreU();
         
@@ -941,6 +965,26 @@ public class Main extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_BTN_UnivSearchMouseClicked
+
+    private void BTN_ElimSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTN_ElimSMouseClicked
+        // TODO add your handling code here:
+        int i = CB_DelS.getSelectedIndex();
+        File temp = new File("./1Seres/" + Perso.get(i).getNombre());
+        Perso.remove(i);
+        
+        temp.delete();
+        
+        File temp2 = new File("./3General/Seres");
+        temp2.delete();
+        
+        for(int i2 = 0; i2 < Perso.size(); i2++){
+        adminSeres as = new adminSeres("./3General/Seres");
+                as.cargarArchivo();
+                as.setSeres(Perso.get(i2));
+                as.escribirArchivo();
+                JOptionPane.showMessageDialog(this, "Ser vivo eliminado exitosamente");
+        }
+    }//GEN-LAST:event_BTN_ElimSMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1043,6 +1087,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel TXT_Viv;
     private javax.swing.JLabel TXT_inst1;
     private javax.swing.JLabel TXT_inst2;
+    private javax.swing.JLabel aviso;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
