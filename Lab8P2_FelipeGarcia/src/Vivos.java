@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class Vivos implements Serializable{
     
     private String Nombre;
-    private long ID;
+    private int ID;
     private int Poder;
     private int Edad;
     private Universo Proce;
@@ -24,7 +24,7 @@ public class Vivos implements Serializable{
 
     public Vivos() {
     }
-    public Vivos(String Nombre, long ID, int Poder, int Edad, Universo Proce, String Raza) {
+    public Vivos(String Nombre, int ID, int Poder, int Edad, Universo Proce, String Raza) {
         this.Nombre = Nombre;
         this.ID = ID;
         this.Poder = Poder;
@@ -40,10 +40,10 @@ public class Vivos implements Serializable{
         this.Nombre = Nombre;
     }
 
-    public long getID() {
+    public int getID() {
         return ID;
     }
-    public void setID(long ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 

@@ -42,7 +42,7 @@ public class Universo implements Serializable{
 
     @Override
     public String toString() {
-        return "Nombre del universo: " + NombreU;
+        return NombreU;
     }
     
 }
