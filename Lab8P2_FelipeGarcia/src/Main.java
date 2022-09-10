@@ -920,7 +920,7 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Hilo h = new Hilo(PB_SeresCargados, Perso);
-        h.run();
+        h.start();
     }//GEN-LAST:event_BTN_PersonasMouseClicked
 
     /**
